@@ -46,6 +46,7 @@ db.init_app(app)
 @app.route('/news_aggregator/api/article_list/popular', methods=['POST'])
 def get_popular():  # put application's code here
 
+    print(request.form )
 
     max_amount = request.values["max_amount"] if len(request.values["max_amount"]) > 0 else None
 
@@ -53,9 +54,9 @@ def get_popular():  # put application's code here
 
     if request.values['time_period'] != '':
         time_period = float(request.values["time_period"]) #days
-        result.filter(Articles.publication_date >= datetime.utcnow() - timedelta(days = time_period))
+        result = result.filter(Articles.publication_date >= datetime.utcnow() - timedelta(days = time_period))
 
-    result.limit(max_amount)
+    result = result.limit(max_amount)
 
     response = {'articles': []}
 
@@ -108,8 +109,15 @@ def get_content():  # put application's code here
 
     link = request.values['link']
 
+    print(link)
+
+    # result = db.session.query(Articles).filter(Articles.article_link == link).first().article_content
+    #
+    # print(jsonify(result))
+
     try:
         result = db.session.query(Articles).filter(Articles.article_link == link).first().article_content
+
     except:
         print("Статья отстутствует")
         result = None
