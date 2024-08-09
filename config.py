@@ -18,7 +18,7 @@ site_list = [
     # }
     {
         'name': 'Ведомости',
-        'logo': "https://www.ileasing.ru/upload/iblock/322/8xQZKEpk.jpg",
+        'logo': "https://i.ibb.co/KXp21fq/image.png",
         'link': 'https://www.vedomosti.ru/rss/rubric/technology.xml',
         'content_selector': '#app > div.layout > div.layout__wrapper.full-width > div.layout__container--transformed.layout__container > div.layout__page > div > div > div:nth-child(1) > div > div.article__container > div > div > div > div:nth-child(2)',
         'additional_tags': ['Технологии'],
